@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مختبر التقنية | TECH LAB</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+:root{--bg:#090e1d;--panel:#121b30;--panel2:#18243d;--purple:#783ce6;--lav:#b78aff;--cyan:#55e5cf;--gold:#f6c768;--white:#f5f4ff;--muted:#aab6ce}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#30205a 0,transparent 35%),radial-gradient(ellipse at 5% 30%,#123747 0,transparent 28%),var(--bg);color:var(--white);font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}.wrap{max-width:1150px;margin:auto;padding:24px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0 26px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}.logo{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#783ce6,#55e5cf);font-size:25px;box-shadow:0 0 30px #783ce655}.brand small{display:block;color:var(--lav);font-size:10px;letter-spacing:2px}.navlinks{display:flex;gap:20px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--cyan)}.pill{border:1px solid #6f54a9;background:#291e48;padding:9px 15px;border-radius:30px;color:#e4d5ff;font-size:13px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:46px 0 54px}.eyebrow{color:var(--cyan);font-size:13px;font-weight:600;letter-spacing:.5px}.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.25;margin:15px 0}.hero h1 span{background:linear-gradient(90deg,var(--lav),var(--cyan));-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;line-height:2;max-width:590px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{border:0;border-radius:13px;padding:13px 21px;font:inherit;font-weight:700;cursor:pointer}.primary{background:linear-gradient(100deg,#783ce6,#a56bff);color:white;box-shadow:0 8px 30px #783ce655}.secondary{background:#17233b;color:#d9e4f7;border:1px solid #35445f}.orb{height:310px;display:grid;place-items:center;position:relative}.ring{width:250px;height:250px;border-radius:50%;border:1px solid #b78aff88;box-shadow:0 0 50px #783ce633,inset 0 0 45px #55e5cf18;display:grid;place-items:center;position:relative}.ring:before,.ring:after{content:"";position:absolute;border:1px dashed #55e5cf66;border-radius:50%;inset:20px;animation:spin 24s linear infinite}.ring:after{inset:-18px;border-color:#b78aff55;animation-direction:reverse}.core{width:130px;height:130px;border-radius:35px;transform:rotate(45deg);background:linear-gradient(135deg,#783ce6,#252f56 65%,#55e5cf);display:grid;place-items:center;box-shadow:0 0 55px #9a66ff66}.core span{transform:rotate(-45deg);font-size:55px}@keyframes spin{to{transform:rotate(360deg)}}.float{position:absolute;background:#18243d;border:1px solid #6b55a0;border-radius:12px;padding:10px 14px;font-size:12px;box-shadow:0 10px 30px #0005}.f1{top:25px;right:0}.f2{bottom:30px;left:0;color:var(--cyan)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:18px 0}.section-head h2{font-size:25px;margin:0}.section-head p{color:var(--muted);margin:6px 0 0;font-size:13px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:linear-gradient(145deg,#18243b,#10182a);border:1px solid #2c3b58;border-radius:19px;padding:20px;min-height:165px;transition:.2s}.card:hover{transform:translateY(-5px);border-color:var(--lav);box-shadow:0 12px 35px #783ce622}.ico{width:45px;height:45px;border-radius:13px;background:#302052;color:var(--lav);display:grid;place-items:center;font-size:23px;margin-bottom:13px}.card h3{margin:0 0 7px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}.stat{background:#121c30cc;border:1px solid #2a3a55;border-radius:16px;padding:17px;text-align:center}.stat strong{font-size:24px;color:var(--cyan);display:block}.stat span{font-size:12px;color:var(--muted)}.welcome{margin:34px 0;background:linear-gradient(100deg,#281b4b,#132d3b);border:1px solid #554080;border-radius:20px;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:20px}.welcome h2{margin:0 0 8px}.welcome p{color:#c0cce0;margin:0;font-size:13px}.welcome b{color:var(--gold)}footer{text-align:center;color:#8190aa;font-size:12px;padding:35px 0 15px;border-top:1px solid #25334b;margin-top:35px}
+@media(max-width:760px){.wrap{padding:17px}.navlinks{display:none}.hero{grid-template-columns:1fr;padding:30px 0}.orb{height:230px;grid-row:1}.ring{width:190px;height:190px}.core{width:105px;height:105px}.core span{font-size:42px}.grid{grid-template-columns:repeat(2,1fr)}.welcome{align-items:flex-start;flex-direction:column}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+ <div class="brand"><div class="logo">⌘</div><div>مختبر التقنية<small>TECH LAB</small></div></div>
+ <div class="navlinks"><a href="#activities">الأنشطة</a><a href="#learning">التعلّم</a><a href="#rewards">الإنجازات</a><a href="#projects">المشاريع</a></div>
+ <a class="pill" href="#activities">ابدئي الاستكشاف ↗</a>
+</nav>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">✦ مساحة الإبداع والابتكار لطالبات المرحلة الثانوية</div>
+ <h1>اكتشفي التقنية…<br><span>واصنعي المستقبل!</span></h1>
+ <p>مرحباً بكِ في مختبر التقنية؛ مساحة تفاعلية تجمع التعلّم واللعب والتحدّي. اكتشفي مفاهيم العالم الرقمي، اختبري مهاراتكِ، وشاركي إبداعاتكِ مع مجتمع من المبتكرات.</p>
+ <div class="actions"><a class="btn primary" href="#activities">ابدئي رحلتكِ الآن ←</a><a class="btn secondary" href="#projects">استكشفي المشاريع</a></div>
+ </div>
+ <div class="orb"><div class="ring"><div class="core"><span>⌘</span></div></div><div class="float f1">✧ فكّري • جرّبي • ابتكري</div><div class="float f2">● عالمكِ الرقمي يبدأ هنا</div></div>
+</section>
+<div class="section-head" id="activities"><div><h2>ماذا ينتظركِ في المختبر؟</h2><p>اختاري محطتكِ وانطلقي في تجربة تعليمية مختلفة</p></div></div>
+<section class="grid">
+ <a class="card" href="#games"><div class="ico">🎮</div><h3>الألعاب التعليمية</h3><p>تحديات ذكية، ألغاز تقنية، وألعاب مطابقة للمفاهيم.</p></a>
+ <a class="card" href="#quizzes"><div class="ico">🧠</div><h3>الاختبارات التفاعلية</h3><p>اختبري معلوماتكِ واحصلي على نتيجة فورية.</p></a>
+ <a class="card" href="#rewards"><div class="ico">🏆</div><h3>النقاط والجوائز</h3><p>اجمعي النقاط وافتحي شارات الإنجاز والمستويات.</p></a>
+ <a class="card" href="#projects"><div class="ico">💡</div><h3>معرض المشاريع</h3><p>اعرضي فكرتكِ وشاركي مشروعكِ مع الجميع.</p></a>
+</section>
+<section id="learning">
+ <div class="section-head"><div><h2>بوابة المعرفة</h2><p>موضوعات تقنية تفتح لكِ آفاقاً جديدة</p></div></div>
+ <div class="grid">
+  <div class="card"><div class="ico">🌐</div><h3>أساسيات الشبكات</h3><p>تعرّفي على الاتصال والأجهزة والبروتوكولات.</p></div>
+  <div class="card"><div class="ico">🤖</div><h3>الذكاء الاصطناعي</h3><p>اكتشفي كيف تتعلم الآلات وتتخذ القرارات.</p></div>
+  <div class="card"><div class="ico">📡</div><h3>إنترنت الأشياء</h3><p>شاهدي كيف تتواصل الأجهزة الذكية من حولنا.</p></div>
+  <div class="card"><div class="ico">🛡️</div><h3>الأمن السيبراني</h3><p>تعلّمي حماية بياناتكِ وهويتكِ الرقمية.</p></div>
+ </div>
+</section>
+<div class="stats" id="rewards"><div class="stat"><strong>+١٠</strong><span>نقاط لكل تحدٍ مكتمل</span></div><div class="stat"><strong>٤</strong><span>محطات معرفية</span></div><div class="stat"><strong>∞</strong><span>فرص للإبداع</span></div></div>
+<section class="welcome" id="projects"><div><h2>لديكِ فكرة تستحق أن تُرى؟ ✨</h2><p>قريباً: مساحة لعرض مشاريع الطالبات ومشاركة الأفكار المبتكرة.</p></div><b>ابتكري بثقة 💜</b></section>
+</main>
+<footer>مختبر التقنية TECH LAB · بيئة تعليمية تفاعلية لطالبات المرحلة الثانوية</footer>
+</div>
+</body>
+</html>
