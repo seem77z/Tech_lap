@@ -50,6 +50,225 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:18px;paddi
 </section>
 <div class="stats" id="rewards"><div class="stat"><strong>+١٠</strong><span>نقاط لكل تحدٍ مكتمل</span></div><div class="stat"><strong>٤</strong><span>محطات معرفية</span></div><div class="stat"><strong>∞</strong><span>فرص للإبداع</span></div></div>
 <section class="welcome" id="projects"><div><h2>لديكِ فكرة تستحق أن تُرى؟ ✨</h2><p>قريباً: مساحة لعرض مشاريع الطالبات ومشاركة الأفكار المبتكرة.</p></div><b>ابتكري بثقة 💜</b></section>
+ 
+<!-- بداية الاختبار التفاعلي -->
+<section id="techQuiz" dir="rtl">
+  <style>
+    #techQuiz {
+      margin: 35px 0;
+      padding: 25px 18px;
+      border: 1px solid #493b70;
+      border-radius: 24px;
+      background: linear-gradient(145deg,#18243d,#24183e);
+      color: #fff;
+      font-family: inherit;
+    }
+    #techQuiz h2 {
+      color: #9c83ff;
+      margin-bottom: 10px;
+    }
+    #techQuiz .quiz-intro {
+      color: #c5c9dc;
+      margin-bottom: 20px;
+    }
+    #techQuiz .q-card {
+      background: #10182c;
+      border: 1px solid #394466;
+      border-radius: 16px;
+      padding: 17px;
+      margin: 15px 0;
+    }
+    #techQuiz .q-card h3 {
+      font-size: 17px;
+      line-height: 1.8;
+      margin: 0 0 13px;
+    }
+    #techQuiz .answer {
+      display: block;
+      width: 100%;
+      text-align: right;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 11px;
+      border: 1px solid #465274;
+      background: #202b46;
+      color: white;
+      font: inherit;
+      cursor: pointer;
+    }
+    #techQuiz .answer:disabled {
+      cursor: default;
+      opacity: .9;
+    }
+    #techQuiz .answer.correct {
+      background: #126b5b;
+      border-color: #43d6bd;
+    }
+    #techQuiz .answer.wrong {
+      background: #71354e;
+      border-color: #ef8ba9;
+    }
+    #techQuiz .feedback {
+      color: #73e6d5;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    #techQuiz .quiz-btn {
+      background: linear-gradient(90deg,#7138e8,#a35cf2);
+      color: white;
+      border: 0;
+      border-radius: 13px;
+      padding: 13px 22px;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    #techQuiz #quizResult {
+      margin-top: 18px;
+      padding: 17px;
+      border-radius: 15px;
+      background: #30224e;
+      text-align: center;
+      display: none;
+      line-height: 2;
+    }
+  </style>
+
+  <h2>🧠 اختبري معلوماتك التقنية</h2>
+  <p class="quiz-intro">
+    تحدّي معلوماتك واكتشفي مدى إبداعك في عالم التقنية!
+  </p>
+
+  <div id="quizQuestions"></div>
+
+  <button class="quiz-btn" id="quizFinish" type="button">
+    عرض نتيجتي ✨
+  </button>
+
+  <div id="quizResult" aria-live="polite"></div>
+
+  <button class="quiz-btn" id="quizRestart" type="button"
+    style="display:none">
+    إعادة الاختبار ↻
+  </button>
+
+  <script>
+    (() => {
+      const questions = [
+        {
+          q: "ما الجزء المسؤول عن تنفيذ العمليات الحسابية والمنطقية في الحاسب؟",
+          a: ["وحدة المعالجة المركزية", "الشاشة", "لوحة المفاتيح", "الطابعة"],
+          c: 0
+        },
+        {
+          q: "أي بروتوكول يُستخدم لتصفح مواقع الويب بأمان؟",
+          a: ["FTP", "HTTPS", "SMTP", "DNS"],
+          c: 1
+        },
+        {
+          q: "ما المقصود بإنترنت الأشياء؟",
+          a: ["الألعاب الإلكترونية", "ربط الأجهزة بالإنترنت وتبادل البيانات", "تصميم الصور", "كتابة المستندات"],
+          c: 1
+        },
+        {
+          q: "أي مما يلي يُعد من أمثلة الذكاء الاصطناعي؟",
+          a: ["المصباح العادي", "القلم", "المساعد الصوتي الذكي", "الكتاب الورقي"],
+          c: 2
+        },
+        {
+          q: "ما الوحدة الأكبر من بين الوحدات التالية؟",
+          a: ["الميجابايت", "الجيجابايت", "التيرابايت", "الكيلوبايت"],
+          c: 2
+        }
+      ];
+
+      const container = document.getElementById("quizQuestions");
+      const result = document.getElementById("quizResult");
+      const finish = document.getElementById("quizFinish");
+      const restart = document.getElementById("quizRestart");
+      let score = 0;
+      let answered = 0;
+      let choices = Array(questions.length).fill(null);
+
+      function render() {
+        container.innerHTML = "";
+        questions.forEach((item, i) => {
+          const card = document.createElement("div");
+          card.className = "q-card";
+
+          const heading = document.createElement("h3");
+          heading.textContent = (i + 1) + ". " + item.q;
+          card.appendChild(heading);
+
+          item.a.forEach((answer, j) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "answer";
+            button.textContent = answer;
+
+            if (choices[i] !== null) {
+              button.disabled = true;
+              if (j === item.c) button.classList.add("correct");
+              else if (j === choices[i]) button.classList.add("wrong");
+            }
+
+            button.addEventListener("click", () => {
+              if (choices[i] !== null) return;
+              choices[i] = j;
+              answered++;
+              if (j === item.c) score++;
+              render();
+            });
+
+            card.appendChild(button);
+          });
+
+          if (choices[i] !== null) {
+            const feedback = document.createElement("p");
+            feedback.className = "feedback";
+            feedback.textContent = choices[i] === item.c
+              ? "أحسنتِ! إجابة صحيحة 🌟"
+              : "ليست الإجابة الصحيحة، راجعي الإجابة المظللة 💜";
+            card.appendChild(feedback);
+          }
+          container.appendChild(card);
+        });
+      }
+
+      finish.addEventListener("click", () => {
+        if (answered < questions.length) {
+          alert("أكملي الإجابة عن جميع الأسئلة أولاً 💜");
+          return;
+        }
+
+        result.style.display = "block";
+        result.textContent =
+          "🎉 نتيجتك: " + score + " من " + questions.length +
+          " — " + (score === 5 ? "مبدعة! الدرجة الكاملة 🏆" :
+          score >= 3 ? "أحسنتِ، واصلي التعلم 💜" :
+          "محاولة جميلة، حاولي مرة أخرى 🌷");
+
+        finish.style.display = "none";
+        restart.style.display = "inline-block";
+      });
+
+      restart.addEventListener("click", () => {
+        score = 0;
+        answered = 0;
+        choices = Array(questions.length).fill(null);
+        result.style.display = "none";
+        finish.style.display = "inline-block";
+        restart.style.display = "none";
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</section>
+<!-- نهاية الاختبار التفاعلي -->
+
 </main>
 <footer>مختبر التقنية TECH LAB · بيئة تعليمية تفاعلية لطالبات المرحلة الثانوية</footer>
 </div>
